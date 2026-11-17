@@ -19,7 +19,7 @@ jobs:
           sudo apt-get install -y pkg-config libxkbcommon-dev libwayland-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev libgl1-mesa-dev dpkg-dev
       - run: ./scripts/package-linux.sh
       - run: cd dist && sha256sum * > SHA256SUMS.txt
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: dist/*
           generate_release_notes: true
@@ -40,7 +40,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - run: cargo install cargo-packager --locked
       - run: cargo packager --release
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: |
             dist/*.exe
