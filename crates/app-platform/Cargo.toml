@@ -1,0 +1,24 @@
+[package]
+name = "app-platform"
+description = "Platform abstraction: directories, native dialogs and a safe filesystem service"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+app-errors.workspace = true
+app-security.workspace = true
+directories.workspace = true
+rfd = { workspace = true, optional = true }
+tracing.workspace = true
+tempfile.workspace = true
+
+[features]
+default = ["native-dialogs"]
+native-dialogs = ["dep:rfd"]

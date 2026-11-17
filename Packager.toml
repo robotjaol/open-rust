@@ -1,0 +1,18 @@
+# cargo-packager configuration (https://docs.crabnebula.dev/packager/).
+# Windows (.exe NSIS) and macOS (.dmg) installers are configured here but have NOT been
+# built or tested by the author (Linux only). Linux packages use scripts/package-linux.sh.
+name = "open-rust"
+product-name = "Open Rust"
+version = "0.1.0"
+identifier = "io.github.robotjaol.open-rust"
+description = "Production-oriented starter for native Rust desktop applications"
+authors = ["robotjaol"]
+homepage = "https://github.com/robotjaol/open-rust"
+license-file = "LICENSE-MIT"
+category = "DeveloperTool"
+out-dir = "dist"
+icons = ["assets/icons/icon.png"]
+before-packaging-command = "cargo build --release -p open-rust"
+binaries-dir = "target/release"
+binaries = [{ path = "open-rust", main = true }]
+formats = ["nsis", "dmg"]

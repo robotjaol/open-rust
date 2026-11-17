@@ -1,0 +1,19 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes: { label: What happened, description: What you did, what you expected, what you saw }
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes: { label: Version (About page or `open-rust -V`) }
+    validations: { required: true }
+  - type: input
+    id: os
+    attributes: { label: OS and display server, placeholder: "Ubuntu 24.04, Wayland" }
+    validations: { required: true }
+  - type: textarea
+    id: logs
+    attributes: { label: Log excerpt or crash report, description: Remove personal paths first }

@@ -1,0 +1,22 @@
+[package]
+name = "app-config"
+description = "Layered, versioned and migratable application configuration"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+app-errors.workspace = true
+serde.workspace = true
+toml.workspace = true
+tempfile.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true

@@ -1,0 +1,12 @@
+/target
+**/*.rs.bk
+*.db
+*.db-wal
+*.db-shm
+.env
+.env.*
+*.pem
+*.p12
+*.pfx
+dist/
+.DS_Store

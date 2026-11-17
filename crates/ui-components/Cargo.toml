@@ -1,0 +1,18 @@
+[package]
+name = "ui-components"
+description = "Design system: tokens, themes, icons and reusable egui widgets"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+egui.workspace = true
+egui_extras.workspace = true
+app-config.workspace = true
+

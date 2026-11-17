@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Open Rust
+Comment=Production-oriented starter for native Rust desktop applications
+Exec=open-rust
+Icon=open-rust
+Terminal=false
+Categories=Development;Utility;
+StartupWMClass=open-rust

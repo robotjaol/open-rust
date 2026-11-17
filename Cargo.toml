@@ -1,0 +1,75 @@
+[workspace]
+resolver = "3"
+members = [
+    "apps/desktop",
+    "crates/app-errors",
+    "crates/app-config",
+    "crates/app-logging",
+    "crates/app-storage",
+    "crates/app-security",
+    "crates/app-platform",
+    "crates/app-core",
+    "crates/ui-components",
+]
+default-members = ["apps/desktop"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT OR Apache-2.0"
+authors = ["robotjaol"]
+repository = "https://github.com/robotjaol/open-rust"
+homepage = "https://github.com/robotjaol/open-rust"
+
+[workspace.dependencies]
+# internal crates
+app-errors = { path = "crates/app-errors" }
+app-config = { path = "crates/app-config" }
+app-logging = { path = "crates/app-logging" }
+app-storage = { path = "crates/app-storage" }
+app-security = { path = "crates/app-security" }
+app-platform = { path = "crates/app-platform" }
+app-core = { path = "crates/app-core" }
+ui-components = { path = "crates/ui-components" }
+
+# external crates (every entry is justified in research/dependency-evaluation.md)
+eframe = { version = "0.37", default-features = false, features = ["default_fonts", "glow", "x11", "wayland", "accesskit"] }
+egui = { version = "0.37", default-features = false, features = ["default_fonts"] }
+egui_extras = { version = "0.37", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "1"
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", default-features = false, features = ["std", "fmt", "env-filter", "registry", "ansi"] }
+rusqlite = { version = "0.43", features = ["bundled", "backup"] }
+directories = "6"
+tempfile = "3"
+rfd = { version = "0.18", default-features = false, features = ["xdg-portal"] }
+image = { version = "0.25", default-features = false, features = ["png"] }
+proptest = "1"
+criterion = { version = "0.8", default-features = false }
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+# panic = "unwind" is intentional: TaskManager isolates worker panics with catch_unwind.
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_debug_implementations = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+unwrap_used = "warn"
+expect_used = "warn"
+dbg_macro = "warn"
+todo = "warn"
